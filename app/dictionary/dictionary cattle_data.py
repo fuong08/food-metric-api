@@ -1,6 +1,7 @@
 import csv
 from typing import Dict
 
+
 def read_cattle_data() -> Dict[str, int]:
     cattle_data = {}
     with open('cattle_data.csv', 'r') as file:

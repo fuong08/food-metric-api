@@ -11,6 +11,7 @@ router = APIRouter(
 
 cattle_data = read_cattle_data()
 
+
 @router.get("/total/{year}")
 async def get_total_cattle_by_year(year: int) -> Dict[str, int]:
     if year not in cattle_data:
