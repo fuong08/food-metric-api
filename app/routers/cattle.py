@@ -1,7 +1,10 @@
+from typing import Dict
+
 from fastapi import APIRouter, Depends, HTTPException
 
-from ..dependencies import get_token_header
+from ..dictionary.dictionarycattle_data import read_cattle_data
 
+from ..dependencies import get_token_header
 
 router = APIRouter(
     prefix="/cattle",
