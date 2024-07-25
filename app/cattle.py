@@ -1,10 +1,5 @@
-from typing import Dict
-
-from fastapi import APIRouter, Depends, HTTPException
-
-from ..dictionary.dictionarycattle_data import read_cattle_data
-
-from ..dependencies import get_token_header
+from fastapi import APIRouter, HTTPException
+import csv
 
 router = APIRouter(
     prefix="/cattle",
@@ -12,12 +7,11 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
 @router.get("/total/{year}")
 async def get_total_cattle_by_year(year: int):
     try:
         total_cattle_by_department = {}
-        with open("dictionary cattle_data.py", "r") as file:
+        with open("dictionarycsv.py", "r") as file:
             reader = csv.DictReader(file)
             for row in reader:
                 if int(row["year"]) == year:
