@@ -1,6 +1,8 @@
 from typing import Dict
 import csv
 
+import csv
+
 from fastapi import APIRouter, Depends, HTTPException
 
 from ..dictionary.dictionarycattle_data import read_cattle_data
@@ -20,6 +22,8 @@ async def get_total_cattle_by_year(year: int):
         total_cattle_by_department = {}
         with open("cattle_data.py", "r") as file:
             reader = csv.reader(file)
+        with open("dictionarycattle_data.py", "r") as file:
+            reader = csv.DictReader(file)
             for row in reader:
                 if int(row["year"]) == year:
                     department = row["department"]
