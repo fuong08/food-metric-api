@@ -4,12 +4,10 @@ from typing import Dict
 
 def read_cattle_data() -> Dict[str, int]:
     cattle_data = {}
-    with open('cattledata1.csv','cattledata2.csv', 'r') as file:
+    with open('datacattle.csv', 'r') as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
-            department, year, total_cattle = row[0], int(row[1]), int(row[2])
-            if year not in cattle_data:
-                cattle_data[year] = {}
-            cattle_data[year][department] = total_cattle
+            Department, Total_in_2022, Total_in_2021 = row[0], int(row[1]), int(row[2])
+
     return cattle_data
