@@ -17,6 +17,7 @@ app.include_router(get_total_cattle_by_year)
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 app.include_router(
     admin.router,
     prefix="/admin",
