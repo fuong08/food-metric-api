@@ -17,7 +17,7 @@ router = APIRouter(
 async def get_total_cattle_by_year(year: int):
     try:
         total_cattle_by_department = {}
-        with open("cattle_data.py", "r") as file:
+        with open("cattle_data.csv", "r") as file:
             reader = csv.reader(file)
         with open("dictionarycattle_data.py", "r") as file:
             reader = csv.DictReader(file)
