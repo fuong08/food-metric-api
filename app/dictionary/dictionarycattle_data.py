@@ -10,8 +10,8 @@ def read_cattle_data() -> Dict[str, Dict[int, int]]:
         for row in reader:
             Name, Total_in_2022, Total_in_2021 = row[0], int(row[1]), int(row[2])
             cattle_data[Name] = {
-                2022: Total_in_2021,
-                2021: Total_in_2022
+                2021: Total_in_2021,
+                2022: Total_in_2022
             }
 
     return cattle_data
