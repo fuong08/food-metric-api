@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import List
 import csv
 
 from fastapi import APIRouter, Depends, HTTPException
