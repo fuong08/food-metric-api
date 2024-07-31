@@ -1,13 +1,12 @@
-from typing import List
+from typing import List, Dict
 # import csv
 
-import dic
+# import dic
 from fastapi import APIRouter, Depends, HTTPException
 
-from .. import dictionary
-'''from ..dictionary.dictionarycattle_data import read_cattle_data
-from ..dependencies import get_token_header
-'''
+# from .. import dictionary
+from ..dictionary.dictionarycattle_data import read_cattle_data
+# from ..dependencies import get_token_header
 
 router = APIRouter(
     prefix="/cattle",
@@ -17,14 +16,10 @@ router = APIRouter(
 
 
 @router.get("/total/{year}")
-
-async def get_total_cattle_by_year(year: int) -> List[dic[int, int]]:
+async def get_total_cattle_by_year(year: int) -> Dict[str, Dict[int, int]]:
     if year not in [2022, 2021]:
         raise HTTPException(status_code=404, detail=f"Year {year} not found.")
-
-
-    if year == 2022:
-        return dictionary
+    elif year == 2022:
+        return read_cattle_data()
     else:
-        return dictionary
-
+        return read_cattle_data()

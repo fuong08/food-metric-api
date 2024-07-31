@@ -1,9 +1,9 @@
 from fastapi import Depends, FastAPI
-from typing  import List
+# from typing  import List
 from app.dependencies import get_query_token, get_token_header
 from app.internal import admin
 
-from app.routers import items, users
+# from app.routers import items, users
 
 from app.routers import items, users
 
