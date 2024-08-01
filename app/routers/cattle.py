@@ -5,7 +5,7 @@ from typing import List, Dict
 from fastapi import APIRouter, Depends, HTTPException
 
 # from .. import dictionary
-from ..dictionary.dictionarycattle_data import read_cattle_data
+from ..dictionary.cattle_data import read_cattle_data
 from ..dependencies import get_token_header
 
 router = APIRouter(
@@ -24,18 +24,29 @@ async def read_items():
     return fake_items_db
 
 
-@router.get("/{total_year}")
-async def get_total_cattle_by_year(year: int) -> Dict[str, Dict[int, int]]:
-    if year == 2021:
-        return read_cattle_data()
-    elif year == 2022:
-        return read_cattle_data()
-    else:
+@router.get("/total_year")
+async def get_total_cattle_by_year(year: int) -> dict:
+    if year not in [2022, 2021]:
         raise HTTPException(status_code=404, detail=f"Year {year} not found.")
+
+    data = read_cattle_data()
+    result = dict()
+    result["data"] = dict()
+
+    if year == 2021:
+        result["year"] = 2021
+        for key in data.keys():
+            result["data"][key] = data[key][2021]
+    else:
+        result["year"] = 2022
+        for key in data.keys():
+            result["data"][key] = data[key][2022]
+
+    return result
 
 
 @router.put(
-    "/{total_year}}",
+    "/total_year",
     tags=["cattle"],
     responses={403: {"description": "Operation forbidden"}},
 )

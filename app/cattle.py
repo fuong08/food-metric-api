@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from app.dictionary import dictionarycattle_data
+from app.dictionary import cattle_data
 
 # _init_.py
 

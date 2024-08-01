@@ -4,7 +4,7 @@ from typing import Dict
 
 def read_cattle_data() -> Dict[str, Dict[int, int]]:
     cattle_data = {}
-    with open('cattle_data.csv', 'r') as file:
+    with open('app/dictionary/cattle_data.csv', 'r') as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
